@@ -1,4 +1,5 @@
 <h1>Create an Event</h1>
+<p><%= @error %></p>
 <form action="/events" method="post">
 <label>Title</label>
 <input type="text" name="title">
@@ -10,3 +11,5 @@
 <input type="text" name="image">
 <button type="submit">Add Event</button>
 </form>
+
+#might move error message to the bottom

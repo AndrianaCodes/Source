@@ -1,0 +1,14 @@
+<h1>Edit an Event for <%= @event.title %></h1>
+<p><%= @error %></p>
+<form action="/events/<%=@event.id%>" method="post">
+<input type="hidden" name="_method" value="patch">
+<label>Title</label>
+<input type="text" name="event[title]" value="<%= @event.title %>">
+<label>Date</label>
+<input type="text" name="event[date]" value="<%= @event.date %>">
+<label>Address</label>
+<input type="text" name="event[address]" value="<%= @event.address %>">
+<label>Image URL</label>
+<input type="text" name="event[image]" value="<%= @event.image %>">
+<button type="submit">Edit Event</button>
+</form>
