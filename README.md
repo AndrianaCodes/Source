@@ -13,7 +13,7 @@ A web app designed for club promoters and users to view and post events
 
 Features to work on: 
 
-Creating a Attend button for users
+Creating an attend button for users
 
 Being able to see a list of all users that wish to attend
 
