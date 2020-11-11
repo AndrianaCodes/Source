@@ -1,15 +1,14 @@
 class EventsController < ApplicationController
 
     # CREATE 
+        before do
+            require_login
+        end
 
         # New 
         #make a get request to '/events/new'
         get '/events/new' do 
-            if  logged_in?
-                erb :'/events/new'
-            else 
-                redirect '/login'
-            end
+           erb :'/events/new'
         end
 
         #Create
@@ -32,24 +31,21 @@ class EventsController < ApplicationController
             #make a get request to '/events'
 
         get '/events' do 
-            if  logged_in?
                 @events = Event.all.reverse
                 erb :'events/index'
-            else 
-                redirect '/login'
-            end
+    
         end
 
         #show
             #make a get request to '/events/:id'
 
         get '/events/:id' do 
-            if  logged_in?
-                @event = Event.find(params[:id])
-                erb:'events/show'
-            else
-                redirect '/login'
-            end
+                @event = Event.find_by(id: params[:id])
+                if @event
+                    erb:'events/show'
+                else
+                    redirect '/events'
+                end
         end
 
 
@@ -58,12 +54,8 @@ class EventsController < ApplicationController
         # Edit
             #make a get reqest to '/events/:id/edit'
             get '/events/:id/edit' do
-                if  logged_in?
                     @event = Event.find(params[:id])
                     erb :'/events/edit'
-                else 
-                    redirect '/login'
-                end
             end
 
         #Update
