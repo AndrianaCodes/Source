@@ -16,13 +16,14 @@
   <body>
     <div>
     <% if logged_in? %>
-    <div><a href="/events">Events</a></div>
     <div><a href="/">Home</a></div>
+    <div><a href="/events">Events</a></div>
+    <div><a href='/myevents'>My Events</a></div>
     <div><a href="/logout">Log Out</a></div>
     <% else %>
+    <div><a href="/">Home</a></div>
     <div><a href="/signup">Sign Up</a></div>
     <div><a href="/login">Log In</a></div>
-    <div><a href="/">Home</a></div>
     <% end %>
 
 

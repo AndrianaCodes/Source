@@ -17,6 +17,10 @@ class UsersController < ApplicationController
         end
     end
 
-    #users can delete account
+    #Actions that let users view their events
+    get '/myevents' do
+        @events = current_user.events.reverse
+        erb :'/events/index'
+    end
 
 end
