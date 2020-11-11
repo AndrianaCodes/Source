@@ -17,8 +17,7 @@ class EventsController < ApplicationController
             filtered_params = params.reject{|key, value| key == "image" && value.empty?}
             event = current_user.events.build(filtered_params)
             event.image = nil if event.image.empty?
-            if !event.title.empty? && !event.date.empty?
-                event.save
+            if event.save
                 redirect '/events'
             else
                 @error = "Data invalid. Please try again."
