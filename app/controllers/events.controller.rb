@@ -5,13 +5,19 @@ class EventsController < ApplicationController
         # New 
         #make a get request to '/events/new'
         get '/events/new' do 
-            erb :'/events/new'
+            if  logged_in?
+                erb :'/events/new'
+            else 
+                redirect '/login'
+            end
         end
 
         #Create
         #make a post request to '/events'
         post '/events' do
-            event = Event.new(params)
+            filtered_params = params.reject{|key, value| key == "image" && value.empty?}
+            event = current_user.events.build(filtered_params)
+            event.image = nil if event.image.empty?
             if !event.title.empty? && !event.date.empty?
                 event.save
                 redirect '/events'
@@ -26,16 +32,24 @@ class EventsController < ApplicationController
             #make a get request to '/events'
 
         get '/events' do 
-            @events = Event.all.reverse
-            erb :'events/index'
+            if  logged_in?
+                @events = Event.all.reverse
+                erb :'events/index'
+            else 
+                redirect '/login'
+            end
         end
 
         #show
             #make a get request to '/events/:id'
 
         get '/events/:id' do 
-            @event = Event.find(params[:id])
-            erb:'events/show'
+            if  logged_in?
+                @event = Event.find(params[:id])
+                erb:'events/show'
+            else
+                redirect '/login'
+            end
         end
 
 
@@ -44,8 +58,12 @@ class EventsController < ApplicationController
         # Edit
             #make a get reqest to '/events/:id/edit'
             get '/events/:id/edit' do
-                @event = Event.find(params[:id])
-                erb :'/events/edit'
+                if  logged_in?
+                    @event = Event.find(params[:id])
+                    erb :'/events/edit'
+                else 
+                    redirect '/login'
+                end
             end
 
         #Update

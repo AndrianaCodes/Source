@@ -6,6 +6,7 @@
     <p><%= event.date %> </p>
     <p><%= event.address%> </p>
     <img src="<%= event.image %>" alt="event">
-    
-    <a href="/events/<%= event.id %>/edit">Edit</a>
+    <% if event.user && session[:user_id] == event.user.id %>
+        <a href="/events/<%= event.id %>/edit">Edit</a>
+    <% end %>
 <% end %> 
