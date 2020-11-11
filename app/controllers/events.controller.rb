@@ -68,5 +68,10 @@ class EventsController < ApplicationController
     #DESTROY
 
         #make a delete request to '/events/:id'
+        delete '/events/:id' do
+            event = Event.find(params[:id])
+            event.destroy
+            redirect '/events'
+        end
 
 end

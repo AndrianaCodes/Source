@@ -1,1 +1,8 @@
 <h1><%= @event.title %></h1>
+<h2><%= @event.date %></h2>
+<h2><%= @event.address %></h2>
+<img src="<%= @event.image %>" alt="event">
+<form action="/events/<%= @event.id %>" method="post">
+    <input type="hidden" name="_method" value="delete">
+    <button type="submit">Delete Event</button>
+</form>
