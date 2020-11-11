@@ -4,5 +4,7 @@
 <img src="<%= @event.image %>" alt="event">
 <form action="/events/<%= @event.id %>" method="post">
     <input type="hidden" name="_method" value="delete">
+    <% if @event.user == current_user %>
     <button type="submit">Delete Event</button>
+    <% end %>
 </form>
