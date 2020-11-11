@@ -20,7 +20,7 @@ class UsersController < ApplicationController
     #Actions that let users view their events
     get '/myevents' do
         @events = current_user.events.reverse
-        erb :'/events/index'
+        erb :'/users/myevents'
     end
 
 end
