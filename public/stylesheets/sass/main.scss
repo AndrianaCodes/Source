@@ -1,0 +1,82 @@
+.header {
+    display: flex;
+    background-color: black;
+    position: fixed;
+    width: 100%;
+    opacity: 0.95;
+    
+
+    .title {
+        color:  rgb(223, 143, 78);
+        margin: 10px;
+        padding: 5px;
+
+        h1 {
+            margin: 0;
+        }
+    }
+
+    .nav {
+        display: flex;
+        margin: 0 5px 0 auto;
+
+        div {
+            padding: 10px;
+            background-color: grey;
+            margin: 10px;
+            border-radius: 5px;
+            &:hover {
+                cursor: pointer;
+                background-color: rgb(103, 86, 180);
+                transition: 0.5s ease;
+                a {
+                    color: white;
+                }
+            }
+        }
+    }
+}
+
+.wrapper {
+    padding: 70px 30px;
+
+    .events-container {
+    
+        .event-cards {
+            padding: 20px;
+            border-radius: 5px;
+            display: grid;
+            grid-template-columns: 30% 30% 30%;
+            grid-column-gap: 5%;
+            grid-row-gap: 20px;
+            background-color: rgb(103, 86, 180);
+
+            .event-card {
+                box-shadow: 5px 2px black;
+                padding: 10px;
+                border-radius: 5px;
+                background-color: whitesmoke;
+                img {
+                    width: 100%;
+                }
+                &:hover {
+                    background-color: rgb(223, 143, 78);
+                    color: whitesmoke;
+                    cursor: pointer;
+                    transition: 0.5s ease;
+                }
+            }
+        }
+
+    }
+}
+
+a {
+    text-decoration: none;
+    color: rgb(51, 38, 122)
+}
+
+body {
+    padding: 0;
+    margin: 0;
+}
