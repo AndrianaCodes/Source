@@ -1,13 +1,13 @@
 <div class="events-container">
-    <h1>Events</h1>
-    <i>See upcoming events in your area</i>
+<center><h1>Events</h1>
+    <i>See upcoming events in your area</i></center>
     <a href="/events/new">Create an Event</a>
     <div class="event-cards">
     <% @events.each do |event| %>
         <div class="event-card">
-        <h2><a href="/events/<%= event.id %>"><%= event.title %></a> </h2>
-        <p><%= event.date %> </p>
-        <p><%= event.address%> </p>
+        <u><center><h2><a href="/events/<%= event.id %>"><%= event.title %></a> </h2></center></u>
+        <b><p><%= event.date %> </p>
+        <p><%= event.address%> </p></b>
         <img src="<%= event.image %>" alt="event">
         <% if current_user == event.user %>
             <a href="/events/<%= event.id %>/edit">Edit</a>
