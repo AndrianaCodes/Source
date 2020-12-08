@@ -27,4 +27,11 @@ class ApplicationController < Sinatra::Base
     end
   end
 
+  def redirect_if_not_authorized
+    unless current_user == @event.user 
+      redirect '/myevents'
+    end
+  end
+
+
 end

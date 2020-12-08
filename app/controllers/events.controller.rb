@@ -61,6 +61,7 @@ class EventsController < ApplicationController
             #make a patch request to '/events/:id'
             patch '/events/:id' do
                 @event = Event.find(params[:id])
+                redirect_if_not_authorized 
                 if !params["event"]["title"].empty? && !params["event"]["date"].empty?
                    @event.update(params["event"])
                     redirect "/events/#{params[:id]}"
@@ -68,9 +69,6 @@ class EventsController < ApplicationController
                     @error = "Data invalid. Please try again."
                     erb :'events/edit'
                 end
-
-
-                event.update(title: params["title"], date: params["date"], address: params["address"], image: params["image"])
 
             end
 
